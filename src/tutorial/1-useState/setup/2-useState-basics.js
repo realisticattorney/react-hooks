@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// const [text, setText] = useState('random title') //this CAN'T be outside the functional component
 const UseStateBasics = () => {
   // console.log(React) //object
   // console.log(useState) //function
