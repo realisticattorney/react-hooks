@@ -1,30 +1,26 @@
-import React from "react";
-import { data } from "../../../data";
+import React, { useState } from "react";
 
-const UseStateArray = () => {
-  const [people, setPeople] = React.useState(data); //this is the same. But it's easier to set it on import instead of writing React.useState([]) each time
-  const removeItem = (id) => {
-    let newPeople = people.filter((person) => person.id !== id);
-    setPeople(newPeople);
-  };
+const useStateObject = () => {
+  const [person, setPerson] = useState({ name: "German", age: 28 });
+  console.log(person);
+  const { name, age } = person;
   return (
     <>
-      {people.map((person) => {
-        const { id, name } = person;
-        return (
-          <div key={id} className="item">
-            <h4>{name}</h4>
-            <button className="btn" onClick={() => removeItem(id)}>
-              remove
-            </button>
-          </div>
-        );
-      })}
-      <button className="btn" onClick={() => setPeople([])}>
-        clear button
-      </button>
+      <section>
+        <h3>{name}</h3>
+        <h3>{age}</h3>
+        <button
+          className="btn"
+          onClick={() => setPerson({ ...person, age: 0 })}
+        >
+          reset age
+        </button>
+        <button onClick={() => setPerson({ ...person, age: age + 1 })}>
+          increase age
+        </button>
+      </section>
     </>
   );
 };
 
-export default UseStateArray;
+export default useStateObject;
